@@ -1,2 +1,3 @@
-# lasergraph-script-generator
-Script generator for the LaserAnimation Sollinger Lasergraph DSP
+# Lasergraph Script Generator
+
+Script generator for the LaserAnimation Sollinger Lasergraph DSP.
