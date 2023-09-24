@@ -7,6 +7,13 @@ This script is used to share a film from a "master" lasergraph to multiple "node
 * The node lasergraph must have all pictures loaded in order to load s new film, produced on the master.
 * The film will be forcecompiled within the script-workflow but you should compile it for anyway to ensure everything works as expected.
 
+## Files
+
+| Name | Description |
+| ---- | ----------- |
+| share-film.dscr | This saves the film on the master and triggers the load-film.dscr script on all nodes. |
+| load-film.dscr  | This loads the previous saved film on the node. |
+
 ## Lasergraph Commands
 
 ### Master
