@@ -29,11 +29,11 @@ On the master lasergraph the following commands will be executed:
 1. cdd [device:\path\to\film\share]
 1. savefilm film1 [name]
 1. root
-1. sendstring tcp://[node-ip]:[node-port]/startscript [device:\path\to\load-film\script]
+1. sendstring tcp://[node-ip]:[node-port]/startscript [device:\path\to\load-film.dscr]
 
 ### Node
 
-After the master sent the string to execute the **load-film**-script, the following commands will be executed on the node lasergraph:
+After the master sent the string to execute the **load-film.dscr**-script, the following commands will be executed on the node lasergraph:
 
 1. root
 1. file
