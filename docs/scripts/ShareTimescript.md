@@ -10,8 +10,8 @@ This script is used to share the timescript from a "master" lasergraph to multip
 
 | Name | Description |
 | ---- | ----------- |
-| share-script.dscr | This saves the timescript on the master and triggers the load-script.dscr script on all nodes. |
-| load-script.dscr  | This loads the previous saved timescript on the node. |
+| ShareScript.DSCR | This saves the timescript on the master and triggers the LoadScript.DSCR script on all nodes. |
+| LoadScript.DSCR  | This loads the previous saved timescript on the node. |
 
 ## Lasergraph Commands
 
@@ -28,12 +28,13 @@ On the master lasergraph the following commands will be executed:
 1. cdd [device:\path\to\timescript\share]
 1. savescript [name]
 1. root
-1. sendstring tcp://[node-ip]:[node-port]/startscript [device:\path\to\load-script.dscr]
+1. sendstring tcp://[node-ip]:[node-port]/startscript [device:\path\to\LoadScript.DSCR]
 
 ### Node
 
-After the master sent the string to execute the **load-script.dscr**-script, the following commands will be executed on the node lasergraph:
+After the master sent the string to execute the **LoadScript.DSCR**-script, the following commands will be executed on the node lasergraph:
 
+1. stop
 1. root
 1. file
 1. cdd [device:\path\to\film\share]
