@@ -17,10 +17,11 @@ Use the subcommands to generate the desired scripts.
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "lasergraph-script-generator",
-	Short: descriptionShort,
-	Long:  descriptionLong,
-	Args:  cobra.NoArgs,
+	Use:     "lasergraph-script-generator",
+	Short:   descriptionShort,
+	Long:    descriptionLong,
+	Args:    cobra.NoArgs,
+	Version: "0.1.0",
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Help()
 	},
