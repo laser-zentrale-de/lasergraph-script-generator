@@ -3,6 +3,7 @@
 The autoscript must be placed into C:\System\AutoScript.DSCR and will be automatically applied after startup of the Lasergraph DSP.
 
 ## Files
+
 | Name | Description |
 | ---- | ----------- |
 | AutoScript.DSCR | Disables laseroutput by default. |
