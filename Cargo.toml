@@ -9,3 +9,4 @@ repository = "https://github.com/laser-zentrale-de/lasergraph-script-generator"
 clap = { version = "4.5.16", features = ["derive"] }
 env_logger = "0.11.5"
 log = "0.4.22"
+askama = "0.12.1"

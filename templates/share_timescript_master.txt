@@ -1,0 +1,13 @@
+// Master - Script
+root
+script1
+edit
+forcecompile
+root
+file
+cdd {{ share_path }}
+savescript {{ script_name }}
+root
+{% for node in nodes -%}
+sendstring tcp://{{ node }}:{{ port }}/startscript {{ load_path }}\LoadScript.DSCR
+{% endfor -%}
