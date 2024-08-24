@@ -27,7 +27,7 @@ fn main() {
 
             // Check if nodes has at least 1 entry
             if nodes.is_empty() {
-                error!("Error: At least one Lasergraph DSP node must be provided.");
+                error!("At least one Lasergraph DSP node must be provided.");
                 std::process::exit(1);
             }
 
