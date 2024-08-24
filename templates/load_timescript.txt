@@ -1,0 +1,9 @@
+// Node - LoadScript
+stop
+root
+file
+cdd {{ share_path }}
+loadscript {{ script_name }} /overwrite
+root
+script1
+play

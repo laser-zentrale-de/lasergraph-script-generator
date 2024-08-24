@@ -3,7 +3,7 @@ mod template;
 
 use clap::Parser;
 use cli::Commands;
-use log::{error, info, trace};
+use log::{debug, error, info};
 
 fn main() {
     // Initialize the logger
@@ -33,8 +33,8 @@ fn main() {
             }
 
             // Trace print the parsed arguments
-            trace!(
-                "share_path: {}\nload_path: {}\ndest_path: {:?}\nmaster: {}\nnodes: {:?}\nport: {}",
+            debug!(
+                "\nshare_path: {}\nload_path: {}\ndest_path: {:?}\nmaster: {}\nnodes: {:?}\nport: {}",
                 share_path,
                 load_path,
                 dest_path,
@@ -44,16 +44,16 @@ fn main() {
             );
 
             // Call the template function to write the ShareTimescript.DSCR file
-            match template::write_share_time_script(
-                "show".to_string(),
-                share_path,
-                load_path,
+            match template::write_programming_scripts(
+                "show",
+                &share_path,
+                &load_path,
                 port,
-                nodes,
-                dest_path,
+                &nodes,
+                &dest_path,
             ) {
-                Ok(_) => info!("Successfully wrote the ShareTimescript.DSCR file"),
-                Err(e) => error!("Failed to write the ShareTimescript.DSCR file: {}", e),
+                Ok(()) => info!("Successfully wrote the programming scripts"),
+                Err(e) => error!("Failed to write the programming scripts:\n{}", e),
             }
         }
     }

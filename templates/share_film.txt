@@ -1,0 +1,13 @@
+// Share Film - Master
+root
+film1
+edit
+forcecompile
+root
+file
+cdd {{ share_path }}
+savefilm film1 {{ film_name }}
+root
+{% for node in nodes -%}
+sendstring tcp://{{ node }}:{{ port }}/startscript {{ load_path }}\LoadFilm.DSCR
+{% endfor -%}

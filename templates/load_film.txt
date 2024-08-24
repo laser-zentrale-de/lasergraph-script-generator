@@ -1,0 +1,10 @@
+// Load Film - Node
+stop
+root
+file
+cdd {{ share_path }}
+loadfilm {{ film_name }} film1 /overwrite /quiet
+loadfilm {{ film_name }} film2 /overwrite /quiet
+root
+script1
+play
