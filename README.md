@@ -25,7 +25,7 @@ Options:
 ### Programming command
 
 This is the help of the programming command.<br>
-It generates the scripts needed for programming on master DSP and deploy the changes to 
+It generates the scripts needed for programming on master DSP and deploy the changes to
 the node DSPs.
 
 ```bash
