@@ -1,8 +1,7 @@
 mod cli;
 mod template;
 
-use clap::Parser;
-use cli::Commands;
+use clap::{CommandFactory, Parser};
 use log::{debug, error, info};
 
 fn main() {
@@ -16,14 +15,14 @@ fn main() {
 
     match args.cmd {
         // Subcommand: Programming
-        Commands::Programming {
+        Some(cli::Commands::Programming {
             share_path,
             load_path,
             dest_path,
             port,
             nodes,
             master,
-        } => {
+        }) => {
             info!("Subcommand: programming");
 
             // Check if nodes has at least 1 entry
@@ -55,6 +54,13 @@ fn main() {
                 Ok(()) => info!("Successfully wrote the programming scripts"),
                 Err(e) => error!("Failed to write the programming scripts:\n{}", e),
             }
+        }
+
+        // Show help if no subcommand is provided
+        None => {
+            info!("Subcommand not provided -> Fallback to help");
+            cli::Args::command().print_help().unwrap();
+            std::process::exit(0);
         }
     }
 }

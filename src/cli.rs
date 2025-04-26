@@ -8,7 +8,7 @@ use std::path::PathBuf;
 #[command(author, version, about, long_about = None)]
 pub struct Args {
     #[command(subcommand)]
-    pub cmd: Commands,
+    pub cmd: Option<Commands>,
 }
 
 // Define all subcommands below
