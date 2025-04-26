@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use clap_complete::Shell;
 use std::path::PathBuf;
 
 /// Generate scripts for the Laseranimation Sollinger Lasergraph DSP
@@ -14,6 +15,12 @@ pub struct Args {
 // Define all subcommands below
 #[derive(Subcommand, Debug)]
 pub enum Commands {
+    /// Generate shell completions
+    Completions {
+        #[arg(value_enum)]
+        shell: Shell,
+    },
+
     /// Generate the programming scripts
     ///
     /// This subcommand generates the programming scripts for the Lasergraph DSP.

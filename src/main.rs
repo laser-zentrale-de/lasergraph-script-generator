@@ -14,7 +14,15 @@ fn main() {
     let args = cli::Args::parse();
 
     match args.cmd {
-        // Subcommand: Programming
+        // Handle shell completions
+        Some(cli::Commands::Completions { shell }) => {
+            info!("Subcommand: completions");
+            let mut cmd = cli::Args::command();
+            let name = cmd.get_name().to_string();
+            clap_complete::generate(shell, &mut cmd, name, &mut std::io::stdout());
+        }
+
+        // Create the programming scripts
         Some(cli::Commands::Programming {
             share_path,
             load_path,
