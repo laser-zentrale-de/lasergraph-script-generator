@@ -1,7 +1,7 @@
 use std::error::Error;
 use std::fs::File;
 use std::io::prelude::*;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use askama::Template;
 use log::debug;
@@ -12,8 +12,8 @@ pub fn write_programming_scripts(
     share_path: &str,
     load_path: &str,
     port: i32,
-    nodes: &Vec<String>,
-    dest_path: &PathBuf,
+    nodes: &[String],
+    dest_path: &Path,
 ) -> Result<(), Box<dyn Error>> {
     debug!("Start programming scripts");
 
