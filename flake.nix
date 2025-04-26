@@ -1,5 +1,5 @@
 {
-  description = "lasergraph-script-generator development";
+  description = "lasergraph-script-generator";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -18,15 +18,19 @@
         pkgs = import nixpkgs {
           inherit system overlays;
         };
+        rustToolchain = builtins.fromTOML (builtins.readFile ./rust-toolchain.toml);
+        rust = pkgs.rust-bin.stable.${rustToolchain.toolchain.channel}.default;
+        cargo = builtins.fromTOML (builtins.readFile ./Cargo.toml);
       in {
         devShells.default = with pkgs;
-          mkShell rec {
+          mkShell {
             buildInputs = [
+              rust
               pkg-config
-              rust-bin.nightly.latest.default
               pre-commit
               nodejs
               nodePackages.npm
+              goreleaser
             ];
 
             shellHook = ''
@@ -37,6 +41,16 @@
               fi
             '';
           };
+
+        packages.default = pkgs.rustPlatform.buildRustPackage {
+          pname = cargo.package.name;
+          version = cargo.package.version;
+          src = ./.;
+
+          cargoLock = {
+            lockFile = ./Cargo.lock;
+          };
+        };
       }
     );
 }
