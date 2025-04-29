@@ -1,6 +1,7 @@
 mod cli;
 mod template;
 
+use self::template::programming;
 use clap::{CommandFactory, Parser};
 use log::{debug, error, info};
 
@@ -50,8 +51,8 @@ fn main() {
                 port
             );
 
-            // Call the template function to write the ShareTimescript.DSCR file
-            match template::write_programming_scripts(
+            // Call the template function to write the programming scripts
+            match programming::write_programming_scripts(
                 "show",
                 &share_path,
                 &load_path,
