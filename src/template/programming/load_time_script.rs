@@ -1,4 +1,4 @@
-use crate::template::programming::write_template;
+use crate::template::write_template;
 use std::error::Error;
 use std::path::PathBuf;
 

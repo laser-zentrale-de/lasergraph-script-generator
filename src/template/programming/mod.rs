@@ -5,9 +5,7 @@ mod share_time_script;
 
 use crate::programming;
 use std::error::Error;
-use std::fs::File;
-use std::io::prelude::*;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 use log::debug;
 
@@ -68,15 +66,6 @@ pub fn write_programming_scripts(
         share_path.to_string(),
         dest_path.to_path_buf(),
     )?;
-
-    Ok(())
-}
-
-/// Writes a templated string to a file
-fn write_template(file_path: PathBuf, content: String) -> Result<(), Box<dyn Error>> {
-    let mut file = File::create(file_path)?;
-
-    file.write_all(content.as_bytes())?;
 
     Ok(())
 }
