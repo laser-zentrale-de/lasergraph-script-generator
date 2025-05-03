@@ -21,6 +21,15 @@ pub enum Commands {
         shell: Shell,
     },
 
+    /// Generate the Autoboot script
+    ///
+    /// This subcommand generates the Autoboot script that can be placed into every Lasergraph DSP.
+    Autoboot {
+        /// Set the local destination path of the script
+        #[clap(short, long)]
+        dest_path: PathBuf,
+    },
+
     /// Generate the programming scripts
     ///
     /// This subcommand generates the programming scripts for the Lasergraph DSP.

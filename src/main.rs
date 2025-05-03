@@ -1,6 +1,7 @@
 mod cli;
 mod template;
 
+use self::template::{autoboot, programming};
 use clap::{CommandFactory, Parser};
 use log::{debug, error, info};
 
@@ -20,6 +21,17 @@ fn main() {
             let mut cmd = cli::Args::command();
             let name = cmd.get_name().to_string();
             clap_complete::generate(shell, &mut cmd, name, &mut std::io::stdout());
+        }
+
+        // Create the Autoboot script
+        Some(cli::Commands::Autoboot { dest_path }) => {
+            info!("Subcommand: autoboot");
+
+            // Call the template function to write the autoboot script
+            match autoboot::write_autoboot_script(dest_path) {
+                Ok(()) => info!("Successfully wrote the autoboot script"),
+                Err(e) => error!("Failed to write the autoboot script:\n{}", e),
+            }
         }
 
         // Create the programming scripts
@@ -50,8 +62,8 @@ fn main() {
                 port
             );
 
-            // Call the template function to write the ShareTimescript.DSCR file
-            match template::write_programming_scripts(
+            // Call the template function to write the programming scripts
+            match programming::write_programming_scripts(
                 "show",
                 &share_path,
                 &load_path,
