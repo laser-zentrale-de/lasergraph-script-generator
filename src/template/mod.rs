@@ -1,3 +1,4 @@
+pub mod autoboot;
 pub mod programming;
 
 use std::error::Error;
